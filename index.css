@@ -11,26 +11,21 @@
 } 
 
 .img-random{
-    width: 400px;
-    height: 300px;
+    width: 100%;
     border-radius: 10px;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    
-
 }
 
 .random-container{
     padding-top: 15px;
-
-    width: 400px;
-    max-width: 430px;
+    width: 430px;
     height: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0 auto;
     border: 3px solid forestgreen;
     margin-top: 10px;
-    margin: auto;
     background: rgb(201, 201, 201);
+    display: block;
 }
 
 .random-name{
@@ -38,7 +33,17 @@
     font-size: 18px;
     color: forestgreen;
     display: block;
-  
     text-align: center;
+    word-break: break-all;
+}
+
+.text-popular{
+    margin-top: 20px;
+    margin-left: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    color: forestgreen;
+
 
 }
+
