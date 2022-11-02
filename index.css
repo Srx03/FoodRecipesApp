@@ -10,7 +10,7 @@
     transition: 0.8s;
 } 
 
-.img-random{
+#img-random{
     width: 100%;
     border-radius: 10px;
 }
@@ -28,7 +28,7 @@
     display: block;
 }
 
-.random-name{
+#random-name{
     font-family: 'Open Sans', sans-serif;
     font-size: 18px;
     color: forestgreen;
