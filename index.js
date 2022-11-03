@@ -1,5 +1,6 @@
 const randomMealImg = document.getElementById('img-random');
 const randomMealName = document.getElementById('random-name');
+const listElement = document.querySelector("#seafoods");
 
 
 
@@ -20,10 +21,11 @@ const randomMealName = document.getElementById('random-name');
     })
     .then(data => {
        data.meals.forEach(element => {
-            const popularElement = document.createElement('div');
-            popularElement.setAttribute('img-seafood', 'col-3');
-            popularElement.src = element.strMealThumb;
+            const popularElement = document.createElement('img');
+            popularElement.classList.add('img-seafood', 'col-3');
+            popularElement.setAttribute("src", element.strMealThumb);
             console.log(popularElement);
+            listElement.appendChild(popularElement);
        });
 
     })
