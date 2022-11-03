@@ -29,18 +29,24 @@ const mealDetailsContent = document.querySelector('.meal-details-content');
             listElement.appendChild(popularElement);
        });
 
-    })
+    });
 
+
+    listElement.addEventListener('click',  getMealRecipe)
     
 
     function getMealRecipe(e){
         e.preventDefault();
-        if(e.target.classList.contains('recipe-btn')){
+        console.log("test1")
+
+            console.log("test")
             let mealItem = e.target.parentElement.parentElement;
-            fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItem.dataset.id}`)
+            console.log(mealItem.dataset.id)
+            fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${2}`)
             .then(response => response.json())
             .then(data => mealRecipeModal(data.meals));
-        }
+            console.log(data.meals)
+        
     }
 
     function mealRecipeModal(meal){
