@@ -2,6 +2,7 @@ const randomMealImg = document.getElementById('img-random');
 const randomMealName = document.getElementById('random-name');
 const listElement = document.querySelector("#seafoods");
 const mealDetailsContent = document.querySelector('.meal-details-content');
+const recipeCloseBtn = document.getElementById('recipe-close-btn');
 
 
 
@@ -23,7 +24,7 @@ const mealDetailsContent = document.querySelector('.meal-details-content');
     .then(data => {
        data.meals.forEach(element => {
             const popularElement = document.createElement('img');
-            popularElement.classList.add('img-seafood', 'col-3');
+            popularElement.classList.add('img-seafood', 'col-lg-3', 'col-md-6', 'col-sm-12');
             popularElement.setAttribute("src", element.strMealThumb);
             console.log(popularElement);
             listElement.appendChild(popularElement);
@@ -33,16 +34,19 @@ const mealDetailsContent = document.querySelector('.meal-details-content');
 
 
     listElement.addEventListener('click',  getMealRecipe)
+    recipeCloseBtn.addEventListener('click', () => {
+        mealDetailsContent.parentElement.classList.remove('showRecipe');
+    });
     
 
     function getMealRecipe(e){
-        e.preventDefault();
+
         console.log("test1")
 
             console.log("test")
-            let mealItem = e.target.parentElement.parentElement;
-            console.log(mealItem.dataset.id)
-            fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${2}`)
+            let mealItem = e.target;
+            console.log(mealItem)
+            fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${52777}`)
             .then(response => response.json())
             .then(data => mealRecipeModal(data.meals));
             console.log(data.meals)
@@ -68,4 +72,5 @@ const mealDetailsContent = document.querySelector('.meal-details-content');
         `;
         mealDetailsContent.innerHTML = html;
         mealDetailsContent.parentElement.classList.add('showRecipe');
+        console.log( mealDetailsContent.parentElement)
     }
