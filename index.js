@@ -26,7 +26,8 @@ const recipeCloseBtn = document.getElementById('recipe-close-btn');
             const popularElement = document.createElement('img');
             popularElement.classList.add('img-seafood', 'col-lg-3', 'col-md-6', 'col-sm-12');
             popularElement.setAttribute("src", element.strMealThumb);
-            console.log(popularElement);
+            popularElement.setAttribute("id",element.idMeal);
+            // console.log(popularElement);
             listElement.appendChild(popularElement);
        });
 
@@ -34,6 +35,8 @@ const recipeCloseBtn = document.getElementById('recipe-close-btn');
 
 
     listElement.addEventListener('click',  getMealRecipe)
+
+
     recipeCloseBtn.addEventListener('click', () => {
         mealDetailsContent.parentElement.classList.remove('showRecipe');
     });
@@ -41,20 +44,20 @@ const recipeCloseBtn = document.getElementById('recipe-close-btn');
 
     function getMealRecipe(e){
 
-        console.log("test1")
+       // console.log("test1")
 
-            console.log("test")
-            let mealItem = e.target;
+           // console.log("test")
+            let mealItem = e.path[0].id;
             console.log(mealItem)
-            fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${52777}`)
+            fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItem}`)
             .then(response => response.json())
             .then(data => mealRecipeModal(data.meals));
-            console.log(data.meals)
+            // console.log(data.meals)
         
     }
 
     function mealRecipeModal(meal){
-        console.log(meal);
+        //console.log(meal);
         meal = meal[0];
         let html = `
             <h2 class = "recipe-title">${meal.strMeal}</h2>
