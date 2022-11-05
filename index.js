@@ -1,8 +1,7 @@
-const randomMealImg = document.getElementById('img-random');
+const randomMealImg = document.getElementsByClassName('img-random')[0];
 const randomMealName = document.getElementById('random-name');
 const listElement = document.querySelector("#seafoods");
 const mealDetailsContent = document.querySelector('.meal-details-content');
-const recipeCloseBtn = document.getElementById('recipe-close-btn');
 
 
 
@@ -13,6 +12,7 @@ const recipeCloseBtn = document.getElementById('recipe-close-btn');
     .then(data => {
         randomMealImg.src = data.meals[0].strMealThumb;
         randomMealName.innerText = data.meals[0].strMeal;
+        randomMealImg.setAttribute("id", data.meals[0].idMeal);
 
     })
     
@@ -35,11 +35,8 @@ const recipeCloseBtn = document.getElementById('recipe-close-btn');
 
 
     listElement.addEventListener('click',  getMealRecipe)
+    randomMealImg.addEventListener('click',  getMealRecipe)
 
-
-    recipeCloseBtn.addEventListener('click', () => {
-        mealDetailsContent.parentElement.classList.remove('showRecipe');
-    });
     
 
     function getMealRecipe(e){
@@ -74,6 +71,4 @@ const recipeCloseBtn = document.getElementById('recipe-close-btn');
             </div>
         `;
         mealDetailsContent.innerHTML = html;
-        mealDetailsContent.parentElement.classList.add('showRecipe');
-        console.log( mealDetailsContent.parentElement)
     }
